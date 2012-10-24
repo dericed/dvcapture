@@ -27,7 +27,7 @@ OPLOG=ingest_operator.log
 EXPECTED_NUM_ARGS=0
 
 deps(){
-        DEPENDENCIES="dvgrab dvanalyzer gnuplot ffmpeg"
+        DEPENDENCIES="dvgrab dvanalyzer gnuplot ffmpeg md5deep"
  
         deps_ok=YES
         for dep in $DEPENDENCIES ; do
