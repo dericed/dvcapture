@@ -157,7 +157,7 @@ elif [ "$prepanswer" = "Rewind then start" ] ; then
     (stat=$(dvcont status); while [[ "$stat" != "Winding stopped" ]]; do sleep 2; stat=$(dvcont status); done)
 fi
 
-packageid=`cat "$tmplog" | grep "$sourceidlabel" | cut -d '=' -f 2`
+packageid=`cat "$tmplog" | grep "$sourceidlabel" | cut -d: -f2 | sed 's/ //g'`
 if [ -d "$CACHE_DIR/$packageid" ] ; then
    echo "The directory $CACHE_DIR/$packageid already exists. Please delete the directory and try again or do not ingest it again."
    exit
