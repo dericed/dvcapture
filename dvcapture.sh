@@ -54,7 +54,7 @@ ask(){
     if [ -z "$response" ] ; then
     	ask "$1" "$2"
     else
-    	echo "${2}: ${respons}"
+    	echo "${2}: ${response}"
     fi
 }
 offerChoice(){
