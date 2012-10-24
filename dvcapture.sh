@@ -95,7 +95,7 @@ echo "Interface: $Interface"
 echo
 answer=`offerChoice "Do these values match your setup: " "setupcorrect" "'Yes' 'No'"`
 echo ANSWER $answer
-if [ "$answer" == "setupcorrect: 2" ] ; then
+if [ "$answer" == "setupcorrect: No" ] ; then
     echo "Please edit these values in the header of $0 and rerun."
     echo exit
 fi
