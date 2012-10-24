@@ -31,10 +31,10 @@ deps(){
  
         deps_ok=YES
         for dep in $DEPENDENCIES ; do
-                if ! which $dep &>/dev/null ; then
+                if [ ! which $dep &>/dev/null ] ; then
                         echo -e "This script requires $dep to run but it is not installed"
-                        echo -e "If you are running ubuntu or debian you might be able to install $dep with the following  command"
-                        echo -e "\t\tsudo apt-get install $dep\n"
+                        echo -e "If you are running ubuntu or debian you might be able to install $dep with the following command"
+                        echo -e "sudo apt-get install $dep"
                         deps_ok=NO
                 fi
         done
@@ -44,7 +44,33 @@ deps(){
                 exit 1
         else
                 return 0
-        fi}
+        fi
+}
+ask(){
+	# This function requires 3 arguments
+	# 1) A prompt
+	# 2) The label for the metadata value
+    read -p "$1" response
+    if [ -z "$response" ] ; then
+    	ask "$1" "$2"
+    else
+    	echo "${2}: ${respons}"
+    fi
+}
+offerChoice(){
+	# This function requires 3 arguments
+	# 1) A prompt
+	# 2) The label for the metadata value
+	# 3) A vocabulary list
+	PS3="$1"
+	label="$2"
+	eval set "$3"
+	select option in "$@"
+	do
+		break
+	done
+	echo "${label}: ${option}"
+}   
 
 if [ $# -ne $EXPECTED_NUM_ARGS ] ; then
    output_help
