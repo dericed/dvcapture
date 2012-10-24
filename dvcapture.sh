@@ -140,7 +140,7 @@ done
 
 answer=`offerChoice "How should the tape be prepared?: " "PrepareMethod" "'Full repack then start' 'Rewind then start' 'Start from current position'"`
 echo "$answer" >> "$tmplog"
-prepanswer=`echo "$answer" | cut -d: -f 2`
+prepanswer=`echo "$answer" | cut -d: -f2`
 if [ "$prepanswer" = "Full repack then start" ] ; then
     dvcont stop
     echo "Fast Forwarding..."
@@ -203,7 +203,7 @@ if [ -f "$file" ] ; then
 	echo "set terminal svg size 1920, 1080
 	set border 0
 	set datafile separator ','
-	set output '$outputdir/${filename%.*}_${count}_dvanalyzer.svg'
+	set output '$outputdir/${filename%.*}${count}_dvanalyzer.svg'
 	set multiplot layout 4, 1 title 'DV Analyzer Graphs of $filename'
 	set style fill solid border -1
 	set xrange [ 0: ]
