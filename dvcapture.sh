@@ -199,7 +199,7 @@ if [ -f "$file" ] ; then
 	# plot graph
 	echo Analyzing DV stream...
 	dvanalyzer </dev/null --XML "$file"  > "$outputdir/${filename%.*}_dvanalyzer.xml"
-	xsltproc ~/dvanalyzer.xsl "$outputdir/${filename%.*}_dvanalyzer.xml" > "$outputdir/${filename%.*}_dvanalyzer_summary.txt"
+	xsltproc "$scriptdir/dvanalyzer.xsl" "$outputdir/${filename%.*}_dvanalyzer.xml" > "$outputdir/${filename%.*}_dvanalyzer_summary.txt"
 	echo Plotting results...
 	echo "set terminal svg size 1920, 1080
 	set border 0
