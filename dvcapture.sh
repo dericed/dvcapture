@@ -112,7 +112,7 @@ echo "$answer" >> "$tmplog"
 echo
 answer=`ask "Please enter the Source ID: " "$sourceidlabel"`
 echo "$answer" >> "$tmplog"
-id=`echo $answer | cut -d = -f 2`
+id=`echo "$answer" | cut -d: -f2 | sed 's/ //g'`
 answer=`offerChoice "Please enter the tape format: " "SourceFormat" "'DVCam' 'miniDV' 'DVCPRO'"`
 echo "$answer" >> "$tmplog"
 echo
