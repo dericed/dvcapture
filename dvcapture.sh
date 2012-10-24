@@ -140,7 +140,7 @@ done
 
 answer=`offerChoice "How should the tape be prepared?: " "PrepareMethod" "'Full repack then start' 'Rewind then start' 'Start from current position'"`
 echo "$answer" >> "$tmplog"
-prepanswer=`echo "$answer" | cut -d = -f 2`
+prepanswer=`echo "$answer" | cut -d: -f 2`
 if [ "$prepanswer" = "Full repack then start" ] ; then
     dvcont stop
     echo "Fast Forwarding..."
