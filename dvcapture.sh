@@ -97,7 +97,7 @@ answer=`offerChoice "Do these values match your setup: " "setupcorrect" "'Yes' '
 echo ANSWER $answer
 if [ "$answer" == "setupcorrect: No" ] ; then
     echo "Please edit these values in the header of $0 and rerun."
-    echo exit
+    exit
 fi
 
 tmplog=/tmp/dv_capture
