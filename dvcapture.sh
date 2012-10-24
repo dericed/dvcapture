@@ -70,7 +70,7 @@ offerChoice(){
 		break
 	done
 	echo "${label}: ${option}"
-}   
+}
 
 if [ $# -ne $EXPECTED_NUM_ARGS ] ; then
    output_help
@@ -78,6 +78,12 @@ if [ $# -ne $EXPECTED_NUM_ARGS ] ; then
 fi
 
 deps
+
+dvstatus=`dvcont status`
+if [ "$?" = "1" ] ; then
+	echo "The DV deck is not found. Make sure the FireWire is attached correctly and that the deck is on."
+	exit 1
+fi
 
 # setting static process metadata
 echo
@@ -101,12 +107,6 @@ echo "PlaybackDeviceManufacturer: $PlaybackDeviceManufacturer" >> "$tmplog"
 echo "PlaybackDeviceModel: $PlaybackDeviceModel" >> "$tmplog"
 echo "PlaybackDeviceSerialNo: $PlaybackDeviceSerialNo" >> "$tmplog"
 echo "Interface: $Interface" >> "$tmplog"
-
-dvstatus=`dvcont status`
-if [ "$?" = "1" ] ; then
-	echo "The DV deck is not found. Make sure the FireWire is attached correctly and that the deck is on."
-	exit 1
-fi
 
 answer=`ask "Please enter the Operator name: " "Operator"`
 echo "$answer" >> "$tmplog"
